@@ -1,2 +1,3 @@
-function alterarFundo(){
-document.body.style.backgroundColor ="green";}
+function alterarFundo() {
+  document.body.style.background = "green";
+}
