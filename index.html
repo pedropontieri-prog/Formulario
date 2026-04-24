@@ -46,12 +46,6 @@ input, textarea {
   border-radius: 8px;
   border: 1px solid #ccc;
   outline: none;
-  transition: 0.3s;
-}
-
-input:focus, textarea:focus {
-  border-color: #667eea;
-  box-shadow: 0 0 5px rgba(102,126,234,0.5);
 }
 
 button {
@@ -63,41 +57,48 @@ button {
   color: white;
   font-size: 16px;
   cursor: pointer;
-  transition: 0.3s;
 }
 
 button:hover {
   background: #5a67d8;
 }
+
+#resultado {
+  margin-top: 20px;
+}
 </style>
 </head>
 
 <body>
-  <script src="Palmeiras.js"></script>
+
 <div class="container">
-  <h2 id="titulo">Cadastro</h2>
+  <h2>Cadastro</h2>
 
   <form id="meuFormulario">
     <div class="input-group">
       <label>Nome</label>
-      <input type="text" placeholder="Digite seu nome" required>
+      <input type="text" name="nome" required>
     </div>
 
     <div class="input-group">
       <label>URL da Imagem</label>
-      <input type="url" placeholder="https://exemplo.com/imagem.jpg" required>
+      <input type="url" name="imagem" required>
     </div>
 
     <div class="input-group">
       <label>Descrição</label>
-      <textarea rows="4" placeholder="Digite uma descrição..."></textarea>
+      <textarea name="descricao" rows="4"></textarea>
     </div>
 
     <button type="submit">Enviar</button>
-    <p></p>
   </form>
+
   <button type="button" onclick="alterarFundo()">Mudar fundo</button>
+
+  <div id="resultado"></div>
 </div>
+
+<script src="Palmeiras.js"></script>
 
 </body>
 </html>
