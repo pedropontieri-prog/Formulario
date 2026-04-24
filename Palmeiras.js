@@ -5,16 +5,15 @@ document.addEventListener("DOMContentLoaded", function () {
   form.addEventListener("submit", function (event) {
     event.preventDefault();
 
-    const nome = document.querySelector("input[type='text']").value;
-    const imagem = document.querySelector("input[type='url']").value;
-    const descricao = document.querySelector("textarea").value;
+    const nome = form.querySelector("input[type='text']").value;
+    const imagem = form.querySelector("input[type='url']").value;
+    const descricao = form.querySelector("textarea").value;
 
     if (!nome || !imagem) {
       alert("Preencha os campos obrigatórios!");
       return;
     }
 
-    // Criando o card
     const card = document.createElement("div");
     card.style.marginTop = "20px";
     card.style.padding = "15px";
@@ -27,10 +26,11 @@ document.addEventListener("DOMContentLoaded", function () {
       <p>${descricao}</p>
     `;
 
-    // Adiciona abaixo do formulário
     container.appendChild(card);
-
-    // Limpa o formulário
     form.reset();
   });
 });
+
+function alterarFundo() {
+  document.body.style.background = "#222";
+}
