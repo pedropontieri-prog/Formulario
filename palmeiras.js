@@ -1,4 +1,3 @@
-
 const formulario = document.getElementById('meuFormulario');
 const resultado = document.getElementById('resultado');
 
@@ -24,6 +23,23 @@ formulario.addEventListener('submit', function (evento) {
     </div>
   `;
 });
+
+function renderizarCards(atleta) {
+  const novoCard = `
+    <div class="card">
+      <div class="letras">
+        <h3>${atleta.titulo}</h3>
+        <p>${atleta.texto}</p>
+      </div>
+
+      <div class="img">
+        <img src="${atleta.imagem}" alt="${atleta.descricao}">
+      </div>
+    </div>
+  `;
+
+  colecao.innerHTML += novoCard;
+}
 
 function alterarFundo() {
   document.body.style.background = "#222";
