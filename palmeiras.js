@@ -1,14 +1,45 @@
+// Verifica se já existem dados salvos
+let galeria = JSON.parse(localStorage.getItem("galeria")) || [];
+
 const formulario = document.getElementById('meuFormulario');
 const resultado = document.getElementById('resultado');
 
+// Renderiza todos os cards
+function mostrarGaleria() {
+  resultado.innerHTML = "";
+
+  galeria.forEach((atleta) => {
+    renderizarCards(atleta);
+  });
+}
+
+// Evento do formulário
 formulario.addEventListener('submit', function (evento) {
   evento.preventDefault();
 
-  const nome = formulario.nome.value;
-  const imagem = formulario.imagem.value;
-  const descricao = formulario.descricao.value;
+  const novo = {
+    nome: formulario.nome.value,
+    imagem: formulario.imagem.value,
+    descricao: formulario.descricao.value
+  };
 
-  resultado.innerHTML = `
+  // Adiciona no array
+  galeria.push(novo);
+
+  // Salva no localStorage
+  localStorage.setItem("galeria", JSON.stringify(galeria));
+
+  // Atualiza os cards
+  mostrarGaleria();
+
+  // Limpa formulário
+  formulario.reset();
+});
+
+// Função que cria os cards
+function renderizarCards(atleta) {
+
+  const novoCard = `
     <div style="
       margin-top:20px;
       padding:15px;
@@ -17,30 +48,29 @@ formulario.addEventListener('submit', function (evento) {
       box-shadow:0 5px 15px rgba(0,0,0,0.2);
       text-align:center;
     ">
-      <h3>${nome}</h3>
-      <img src="${imagem}" style="width:100%; border-radius:10px; margin:10px 0;">
-      <p>${descricao}</p>
-    </div>
-  `;
-});
+      <h3>${atleta.nome}</h3>
 
-function renderizarCards(atleta) {
-  const novoCard = `
-    <div class="card">
-      <div class="letras">
-        <h3>${atleta.titulo}</h3>
-        <p>${atleta.texto}</p>
-      </div>
+      <img 
+        src="${atleta.imagem}" 
+        alt="${atleta.nome}"
+        style="
+          width:100%;
+          border-radius:10px;
+          margin:10px 0;
+        "
+      >
 
-      <div class="img">
-        <img src="${atleta.imagem}" alt="${atleta.descricao}">
-      </div>
+      <p>${atleta.descricao}</p>
     </div>
   `;
 
-  colecao.innerHTML += novoCard;
+  resultado.innerHTML += novoCard;
 }
 
+// Mostra os dados salvos quando a página abre
+mostrarGaleria();
+
+// Muda o fundo
 function alterarFundo() {
   document.body.style.background = "#222";
 }
