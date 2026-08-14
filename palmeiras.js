@@ -35,8 +35,6 @@ class Atleta {
   }
 }
 
-var atleta, atleta1, atleta2, atleta3, atleta4;
-
 let galeria = JSON.parse(localStorage.getItem("galeria")) || [];
 
 const formulario = document.getElementById("meuFormulario");
@@ -45,8 +43,8 @@ const resultado = document.getElementById("resultado");
 function mostrarGaleria() {
   resultado.innerHTML = "";
 
-  galeria.forEach((dados) => {
-    const atleta = new Atleta(
+  galeria.forEach(function(dados) {
+    let atleta = new Atleta(
       dados.nome,
       dados.imagem,
       dados.descricao
@@ -59,7 +57,7 @@ function mostrarGaleria() {
 formulario.addEventListener("submit", function(evento) {
   evento.preventDefault();
 
-  atleta = new Atleta(
+  let atleta = new Atleta(
     formulario.nome.value,
     formulario.imagem.value,
     formulario.descricao.value
@@ -74,19 +72,19 @@ formulario.addEventListener("submit", function(evento) {
   formulario.reset();
 });
 
-mostrarGaleria();
-
 function alterarFundo() {
   document.body.style.background = "#222";
 }
 
-// NOVO: apaga todos os atletas
 function apagarTudo() {
-  if (confirm("Tem certeza que deseja apagar todos os atletas?")) {
-    galeria = [];
 
-    localStorage.removeItem("galeria");
+  localStorage.removeItem("galeria");
 
-    resultado.innerHTML = "";
-  }
+  galeria = [];
+
+  resultado.innerHTML = "";
+
+  alert("Todos os atletas foram apagados!");
 }
+
+mostrarGaleria();
