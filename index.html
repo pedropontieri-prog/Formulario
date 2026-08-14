@@ -10,7 +10,7 @@ body {
   margin: 0;
   font-family: Arial, sans-serif;
   background: linear-gradient(135deg, #667eea, #764ba2);
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -46,6 +46,7 @@ input, textarea {
   border-radius: 8px;
   border: 1px solid #ccc;
   outline: none;
+  box-sizing: border-box;
 }
 
 button {
@@ -73,9 +74,11 @@ button:hover {
 <body>
 
 <div class="container">
+
   <h2>Cadastro do Atleta</h2>
 
   <form id="meuFormulario">
+
     <div class="input-group">
       <label>Nome do Atleta</label>
       <input type="text" name="nome" required>
@@ -91,13 +94,24 @@ button:hover {
       <textarea name="descricao" rows="4"></textarea>
     </div>
 
-    <button type="submit">Enviar</button>
+    <button type="submit">
+      Enviar
+    </button>
+
   </form>
 
-  <button type="button" onclick="alterarFundo()">Mudar fundo</button>
+  <button type="button" onclick="alterarFundo()">
+    Mudar fundo
+  </button>
+
+  <button type="button" onclick="apagarTudo()">
+    Apagar tudo
+  </button>
 
   <div id="resultado"></div>
+
 </div>
+
 <script src="palmeiras.js"></script>
 
 </body>
