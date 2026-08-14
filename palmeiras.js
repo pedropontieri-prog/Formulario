@@ -79,3 +79,14 @@ mostrarGaleria();
 function alterarFundo() {
   document.body.style.background = "#222";
 }
+
+// NOVO: apaga todos os atletas
+function apagarTudo() {
+  if (confirm("Tem certeza que deseja apagar todos os atletas?")) {
+    galeria = [];
+
+    localStorage.removeItem("galeria");
+
+    resultado.innerHTML = "";
+  }
+}
