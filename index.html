@@ -1,118 +1,178 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Formulário</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<style>
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: linear-gradient(135deg, #667eea, #764ba2);
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+  <title>Cadastro do Atleta</title>
 
-.container {
-  background: #fff;
-  padding: 30px;
-  border-radius: 15px;
-  width: 340px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-}
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      min-height: 100vh;
 
-h2 {
-  text-align: center;
-  margin-bottom: 20px;
-  color: #333;
-}
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
 
-.input-group {
-  margin-bottom: 15px;
-}
+    .container {
+      background: #fff;
+      padding: 30px;
+      border-radius: 15px;
+      width: 340px;
 
-label {
-  display: block;
-  margin-bottom: 5px;
-  color: #555;
-}
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    }
 
-input, textarea {
-  width: 100%;
-  padding: 10px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  outline: none;
-  box-sizing: border-box;
-}
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333;
+    }
 
-button {
-  width: 100%;
-  padding: 12px;
-  border: none;
-  border-radius: 8px;
-  background: #667eea;
-  color: white;
-  font-size: 16px;
-  cursor: pointer;
-  margin-top: 10px;
-}
+    .input-group {
+      margin-bottom: 15px;
+    }
 
-button:hover {
-  background: #5a67d8;
-}
+    label {
+      display: block;
+      margin-bottom: 5px;
+      color: #555;
+    }
 
-#resultado {
-  margin-top: 20px;
-}
-</style>
+    input,
+    textarea {
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      outline: none;
+      box-sizing: border-box;
+    }
+
+    input:focus,
+    textarea:focus {
+      border-color: #667eea;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      background: #667eea;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      background: #5a67d8;
+    }
+
+    #resultado {
+      margin-top: 20px;
+    }
+
+    .card {
+      margin-top: 20px;
+      padding: 15px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      text-align: center;
+    }
+
+    .card h3 {
+      color: #333;
+    }
+
+    .card img {
+      width: 100%;
+      border-radius: 10px;
+      margin: 10px 0;
+    }
+
+    .card p {
+      color: #555;
+    }
+  </style>
 </head>
 
 <body>
 
-<div class="container">
+  <div class="container">
 
-  <h2>Cadastro do Atleta</h2>
+    <h2>Cadastro do Atleta</h2>
 
-  <form id="meuFormulario">
+    <form id="meuFormulario">
 
-    <div class="input-group">
-      <label>Nome do Atleta</label>
-      <input type="text" name="nome" required>
-    </div>
+      <div class="input-group">
+        <label for="nome">
+          Nome do Atleta
+        </label>
 
-    <div class="input-group">
-      <label>URL da Imagem do Atleta</label>
-      <input type="url" name="imagem" required>
-    </div>
+        <input
+          type="text"
+          id="nome"
+          name="nome"
+          placeholder="Digite o nome"
+          required
+        >
+      </div>
 
-    <div class="input-group">
-      <label>Descrição do Atleta</label>
-      <textarea name="descricao" rows="4"></textarea>
-    </div>
+      <div class="input-group">
+        <label for="imagem">
+          URL da Imagem do Atleta
+        </label>
 
-    <button type="submit">
-      Enviar
+        <input
+          type="url"
+          id="imagem"
+          name="imagem"
+          placeholder="https://..."
+          required
+        >
+      </div>
+
+      <div class="input-group">
+        <label for="descricao">
+          Descrição do Atleta
+        </label>
+
+        <textarea
+          id="descricao"
+          name="descricao"
+          rows="4"
+          placeholder="Digite uma descrição"
+        ></textarea>
+      </div>
+
+      <button type="submit">
+        Enviar
+      </button>
+
+    </form>
+
+    <button type="button" onclick="alterarFundo()">
+      Mudar fundo
     </button>
 
-  </form>
+    <button type="button" onclick="apagarTudo()">
+      Apagar tudo
+    </button>
 
-  <button type="button" onclick="alterarFundo()">
-    Mudar fundo
-  </button>
+    <div id="resultado"></div>
 
-  <button type="button" onclick="apagarTudo()">
-    Apagar tudo
-  </button>
+  </div>
 
-  <div id="resultado"></div>
-
-</div>
-
-<script src="palmeiras.js"></script>
+  <script src="palmeiras.js"></script>
 
 </body>
+
 </html>
